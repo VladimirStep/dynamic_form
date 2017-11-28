@@ -13,13 +13,22 @@ const FormConstructorSection = styled.section`
     `;
 
 class FormConstructor extends React.Component {
+    constructor(props) {
+        super(props);
+        this.submitForm = this.submitForm.bind(this);
+    }
+
+    submitForm(values) {
+        console.log(values);
+    }
+
     render() {
         const {handleSubmit, pristine, reset, submitting} = this.props;
 
         return (
             <FormConstructorSection>
                 <h3>Form Constructor</h3>
-                <form onSubmit={handleSubmit}>
+                <form onSubmit={handleSubmit(this.submitForm)}>
                     <div>
                         <label>Field name</label>
                         <div>
