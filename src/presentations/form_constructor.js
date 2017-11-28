@@ -3,7 +3,7 @@ import { Field, reduxForm } from 'redux-form';
 import styled from 'styled-components';
 
 const FormConstructorSection = styled.section`
-        width: 100%;
+        flex-basis: 32%;
         padding: 20px;
         background-color: #eeeeee;
         display: flex;

@@ -1,5 +1,6 @@
 import React from 'react';
 import FormConstructor from './form_constructor';
+import FormView from './form_view';
 import styled from 'styled-components';
 
 const AppWrapper = styled.main`
@@ -14,6 +15,7 @@ const AppWrapper = styled.main`
 function DynamicFormApp() {
     return (
         <AppWrapper>
+            <FormView />
             <FormConstructor />
         </AppWrapper>
     );
