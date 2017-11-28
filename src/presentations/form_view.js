@@ -1,6 +1,7 @@
 import React from 'react';
-import { Field, reduxForm } from 'redux-form';
+import { FieldArray, reduxForm } from 'redux-form';
 import styled from 'styled-components';
+import RenderFormItems from './render_form_items';
 
 const FormViewSection = styled.section`
     flex-basis: 68%;
@@ -29,7 +30,7 @@ class FormView extends React.Component {
             <FormViewSection>
                 <h3>My form</h3>
                 <form onSubmit={handleSubmit(this.submitForm)}>
-
+                    <FieldArray component={RenderFormItems} name="items" />
                     <div>
                         <button type='submit' disabled={pristine || submitting}>Submit</button>
                         <button type='button' disabled={pristine || submitting} onClick={reset}>Clear</button>
