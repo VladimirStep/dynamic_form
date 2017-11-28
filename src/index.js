@@ -10,7 +10,10 @@ const allRedusers = {
     form: formReducer
 };
 const rootReduser = combineReducers(allRedusers);
-const store = createStore(rootReduser);
+const store = createStore(
+    rootReduser,
+    window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+);
 
 ReactDOM.render(
     <Provider store={ store }>
