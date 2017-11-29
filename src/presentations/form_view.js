@@ -1,7 +1,6 @@
 import React from 'react';
-import { FieldArray, reduxForm } from 'redux-form';
 import styled from 'styled-components';
-import RenderFormItems from './render_form_items';
+import RenderFormItem from './render_form_item';
 
 const FormViewSection = styled.section`
     flex-basis: 68%;
@@ -24,13 +23,16 @@ class FormView extends React.Component {
     }
 
     render() {
-        const {handleSubmit, pristine, reset, submitting} = this.props;
+        const {handleSubmit, pristine, reset, submitting, fields} = this.props;
 
         return (
             <FormViewSection>
                 <h3>My form</h3>
                 <form onSubmit={handleSubmit(this.submitForm)}>
-                    <FieldArray component={RenderFormItems} name="items" />
+                    {fields.map((field, index) => {
+                            return <RenderFormItem key={index} field={field} index={index} fields={fields} />;
+                        }
+                    )}
                     <div>
                         <button type='submit' disabled={pristine || submitting}>Submit</button>
                         <button type='button' disabled={pristine || submitting} onClick={reset}>Clear</button>
@@ -41,6 +43,4 @@ class FormView extends React.Component {
     }
 }
 
-export default reduxForm({
-    form: 'customForm'
-})(FormView);
+export default FormView;
