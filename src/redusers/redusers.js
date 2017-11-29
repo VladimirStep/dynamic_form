@@ -17,7 +17,7 @@ function formConstructorReduser(state = initialState, action) {
                 fieldName,
                 fieldLabel: fieldLabel || fieldName,
                 fieldType,
-                isRequired
+                isRequired: isRequired || false
             };
             return Object.assign({}, state, {
                 fields: state.fields.concat(newField)

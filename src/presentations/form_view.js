@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import { Field } from 'redux-form';
 import RenderFormItem from './render_form_item';
 
 const FormViewSection = styled.section`
@@ -30,7 +31,13 @@ class FormView extends React.Component {
                 <h3>My form</h3>
                 <form onSubmit={handleSubmit(this.submitForm)}>
                     {fields.map((field, index) => {
-                            return <RenderFormItem key={index} field={field} index={index} fields={fields} />;
+                            return <Field key={index}
+                                          name={field.fieldName}
+                                          component={RenderFormItem}
+                                          field={field}
+                                          index={index}
+                                          fields={fields}
+                            />;
                         }
                     )}
                     <div>

@@ -47,6 +47,7 @@ class FormConstructor extends React.Component {
                         <label>Field type</label>
                         <div>
                             <Field name='fieldType' component='select'>
+                                <option></option>
                                 { Object.values(FormFieldType).map((type, index) =>
                                     <option key={index} value={type}>{type}</option>
                                 )}
