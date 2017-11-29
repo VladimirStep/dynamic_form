@@ -1,6 +1,7 @@
 import React from 'react';
-import { Field, reduxForm } from 'redux-form';
+import { Field } from 'redux-form';
 import styled from 'styled-components';
+import { FormFieldType } from "../redusers/actions";
 
 const FormConstructorSection = styled.section`
         flex-basis: 32%;
@@ -19,8 +20,7 @@ class FormConstructor extends React.Component {
     }
 
     submitForm(values) {
-        this.props.registerField('customForm', `items[0].${values.fieldName}`, 'Field');
-        this.props.arrayPush('customForm', `items[0].${values.fieldName}`, {});
+        this.props.addField(values);
         this.props.reset('constructor');
     }
 
@@ -47,9 +47,9 @@ class FormConstructor extends React.Component {
                         <label>Field type</label>
                         <div>
                             <Field name='fieldType' component='select'>
-                                <option value="text input">text input</option>
-                                <option value="textarea input">textarea input</option>
-                                <option value="select">select</option>
+                                { Object.values(FormFieldType).map((type) =>
+                                    <option value={type}>{type}</option>
+                                )}
                             </Field>
                         </div>
                     </div>

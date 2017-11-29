@@ -1,12 +1,11 @@
 import { connect } from "react-redux";
-import { registerField, arrayPush, reduxForm, reset } from 'redux-form';
+import { reduxForm } from 'redux-form';
 import FormConstructor from '../presentations/form_constructor';
+import { createCustomField } from "../redusers/actions";
 
 function mapDispatchToProps(dispatch) {
     return {
-        registerField: (formName, field, type) => dispatch(registerField(formName, field, type)),
-        arrayPush: (formName, field, value) => dispatch(arrayPush(formName, field, value)),
-        reset: (formName) => dispatch(reset(formName))
+        addField: (fieldProperties) => dispatch(createCustomField(fieldProperties))
     };
 }
 

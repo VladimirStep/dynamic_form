@@ -4,10 +4,12 @@ import { Provider } from 'react-redux';
 import { createStore, combineReducers } from 'redux';
 import { reducer as formReducer } from 'redux-form';
 import './index.css';
+import formConstructorReduser from './redusers/redusers';
 import DynamicFormApp from './presentations/dynamic_form_app';
 
 const allRedusers = {
-    form: formReducer
+    form: formReducer,
+    formConstructor: formConstructorReduser
 };
 const rootReduser = combineReducers(allRedusers);
 const store = createStore(
