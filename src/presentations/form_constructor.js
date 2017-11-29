@@ -19,7 +19,9 @@ class FormConstructor extends React.Component {
     }
 
     submitForm(values) {
-        console.log(values);
+        this.props.registerField('customForm', `items[0].${values.fieldName}`, 'Field');
+        this.props.arrayPush('customForm', `items[0].${values.fieldName}`, {});
+        this.props.reset('constructor');
     }
 
     render() {
@@ -65,6 +67,4 @@ class FormConstructor extends React.Component {
     }
 }
 
-export default reduxForm({
-    form: 'constructor'
-})(FormConstructor);
+export default FormConstructor;
