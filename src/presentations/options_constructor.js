@@ -1,7 +1,7 @@
 import React from 'react';
 import { Field } from 'redux-form';
 import { FormFieldType } from "../redusers/actions";
-import * as validations from '../validations/constructor_validations';
+import * as validations from '../validations/validations';
 import RenderConstructorField from './render_constructor_field';
 
 class OptionsConstructor extends React.Component {

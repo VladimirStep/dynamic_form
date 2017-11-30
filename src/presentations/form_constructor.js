@@ -3,7 +3,7 @@ import { Field, FieldArray, reduxForm } from 'redux-form';
 import styled from 'styled-components';
 import { FormFieldType } from "../redusers/actions";
 import OptionsConstructor from './options_constructor';
-import * as validations from '../validations/constructor_validations';
+import * as validations from '../validations/validations';
 import RenderConstructorField from './render_constructor_field';
 
 const FormConstructorSection = styled.section`
@@ -55,6 +55,14 @@ class FormConstructor extends React.Component {
                     <hr/>
                     <p>Validations:</p>
                     <Field name='isRequired' label='Field required?'
+                           component={RenderConstructorField}
+                           type={FormFieldType.CHECKBOX}
+                    />
+                    <Field name='isNumber' label='Number?'
+                           component={RenderConstructorField}
+                           type={FormFieldType.CHECKBOX}
+                    />
+                    <Field name='isEmail' label='Email?'
                            component={RenderConstructorField}
                            type={FormFieldType.CHECKBOX}
                     />
