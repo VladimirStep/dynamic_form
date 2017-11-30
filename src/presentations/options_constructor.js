@@ -1,5 +1,8 @@
 import React from 'react';
 import { Field } from 'redux-form';
+import { FormFieldType } from "../redusers/actions";
+import * as validations from '../validations/constructor_validations';
+import RenderConstructorField from './render_constructor_field';
 
 class OptionsConstructor extends React.Component {
     render() {
@@ -10,14 +13,16 @@ class OptionsConstructor extends React.Component {
                 <label htmlFor="options">Options</label>
                 {fields.map((option, index) =>
                     <div key={index}>
-                        <label htmlFor={`${option}.optionLabel`}>Option name</label>
-                        <div>
-                            <Field name={`${option}.optionLabel`} id={`${option}.optionLabel`} component='input' type='text' />
-                        </div>
-                        <label htmlFor={`${option}.optionValue`}>Option value</label>
-                        <div>
-                            <Field name={`${option}.optionValue`} id={`${option}.optionValue`} component='input' type='text' />
-                        </div>
+                        <Field name={`${option}.optionLabel`} label='Option label'
+                               component={RenderConstructorField}
+                               type={FormFieldType.TEXT}
+                               validate={validations.required}
+                        />
+                        <Field name={`${option}.optionValue`} label='Option value'
+                               component={RenderConstructorField}
+                               type={FormFieldType.TEXT}
+                               validate={validations.required}
+                        />
                         <button type='button' onClick={() => fields.remove(index)}>Remove Option</button>
                         <hr/>
                     </div>
