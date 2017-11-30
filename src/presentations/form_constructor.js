@@ -35,35 +35,27 @@ class FormConstructor extends React.Component {
                 <h3>Form Constructor</h3>
                 <form onSubmit={handleSubmit(this.submitForm)}>
                     <Field name='fieldName' label='Field name'
-                           component={RenderConstructorField} type='text'
-                           validate={validations.required} />
-                    <div>
-                        <label htmlFor='fieldLabel'>Field label</label>
-                        <div>
-                            <Field name='fieldLabel' id='fieldLabel' component='input' type='text' />
-                        </div>
-                    </div>
-                    <div>
-                        <label htmlFor='fieldType'>Field type</label>
-                        <div>
-                            <Field name='fieldType' id='fieldType' component='select'>
-                                <option></option>
-                                { Object.values(FormFieldType).map((type, index) =>
-                                    <option key={index} value={type}>{type}</option>
-                                )}
-                            </Field>
-                        </div>
-                    </div>
+                           component={RenderConstructorField}
+                           type={FormFieldType.TEXT}
+                           validate={validations.required}
+                    />
+                    <Field name='fieldLabel' label='Field label'
+                           component={RenderConstructorField}
+                           type={FormFieldType.TEXT}
+                    />
+                    <Field name='fieldType' label='Field type'
+                           component={RenderConstructorField}
+                           type={FormFieldType.SELECT}
+                           options={Object.values(FormFieldType)}
+                           validate={validations.required}
+                    />
                     {needOptions &&
-                        <div>
-                            <label htmlFor="options">Options</label>
-                            <FieldArray name='options' component={OptionsConstructor} />
-                        </div>
+                        <FieldArray name='options' component={OptionsConstructor} />
                     }
-                    <div>
-                        <label htmlFor="isRequired">Required</label>
-                        <Field name='isRequired' id='isRequired' component='input' type='checkbox' />
-                    </div>
+                    <Field name='isRequired' label='Field required?'
+                           component={RenderConstructorField}
+                           type={FormFieldType.CHECKBOX}
+                    />
                     <div>
                         <button type='submit' disabled={pristine || submitting}>Add Field</button>
                         <button type='button' disabled={pristine || submitting} onClick={reset}>Clear</button>

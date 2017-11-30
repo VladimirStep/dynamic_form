@@ -19,7 +19,7 @@ class RenderFormItem extends React.Component {
         } else if (fieldType === FormFieldType.SELECT) {
             output = <div>
                 <label htmlFor={input.name}>{fieldLabel}</label>
-                <select name={input.name} id={input.name}>
+                <select {...input} id={input.name}>
                     <option></option>
                     {options.map((option, index) =>
                         <option key={index} value={option.optionValue}>{option.optionLabel}</option>

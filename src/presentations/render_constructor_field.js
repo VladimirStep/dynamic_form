@@ -3,9 +3,7 @@ import { FormFieldType } from '../redusers/actions';
 
 class RenderConstructorField extends React.Component {
     render() {
-        console.log(this.props);
-
-        const {input, label, type, meta: { touched, error, warning }} = this.props;
+        const {input, label, type, options, meta: { touched, error, warning }} = this.props;
         let output = null;
 
         if (type === FormFieldType.TEXT) {
@@ -15,6 +13,27 @@ class RenderConstructorField extends React.Component {
                     <input {...input} id={input.name} type={type} />
                     {touched && ((error && <span>{error}</span>) || (warning && <span>{warning}</span>))}
                 </div>
+            </div>
+        }
+
+        if (type === FormFieldType.CHECKBOX) {
+            output = <div>
+                <label htmlFor={input.name}>{label}</label>
+                <input {...input} id={input.name} type={type} />
+                {warning && <span>{warning}</span>}
+            </div>
+        }
+
+        if (type === FormFieldType.SELECT) {
+            output = <div>
+                <label htmlFor={input.name}>{label}</label>
+                <select {...input} id={input.name}>
+                    <option></option>
+                    {options.map((option, index) =>
+                        <option key={index} value={option}>{option}</option>
+                    )}
+                </select>
+                {touched && ((error && <span>{error}</span>) || (warning && <span>{warning}</span>))}
             </div>
         }
 

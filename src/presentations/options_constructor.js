@@ -7,6 +7,7 @@ class OptionsConstructor extends React.Component {
 
         return (
             <div>
+                <label htmlFor="options">Options</label>
                 {fields.map((option, index) =>
                     <div key={index}>
                         <label htmlFor={`${option}.optionLabel`}>Option name</label>
