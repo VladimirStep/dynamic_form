@@ -3,16 +3,15 @@ import { Field } from 'redux-form';
 
 class OptionsConstructor extends React.Component {
     render() {
-        console.log(this.props);
         const { fields } = this.props;
 
         return (
             <div>
                 {fields.map((option, index) =>
                     <div key={index}>
-                        <label htmlFor={`${option}.optionName`}>Option name</label>
+                        <label htmlFor={`${option}.optionLabel`}>Option name</label>
                         <div>
-                            <Field name={`${option}.optionName`} id={`${option}.optionName`} component='input' type='text' />
+                            <Field name={`${option}.optionLabel`} id={`${option}.optionLabel`} component='input' type='text' />
                         </div>
                         <label htmlFor={`${option}.optionValue`}>Option value</label>
                         <div>

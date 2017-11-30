@@ -22,7 +22,7 @@ class RenderFormItem extends React.Component {
                 <select name={input.name} id={input.name}>
                     <option></option>
                     {options.map((option, index) =>
-                        <option key={index} value={option.optionValue}>{option.optionName}</option>
+                        <option key={index} value={option.optionValue}>{option.optionLabel}</option>
                     )}
                 </select>
                 {touched && ((error && <span>{error}</span>) || (warning && <span>{warning}</span>))}
@@ -31,9 +31,9 @@ class RenderFormItem extends React.Component {
             output = <div>
                 <label htmlFor={input.name}>{fieldLabel}</label>
                 {options.map((option, index) =>
-                    <label>
+                    <label key={index}>
                         <input name={input.name} value={option.optionValue} type={fieldType} />
-                        {option.optionName}
+                        {option.optionLabel}
                     </label>
                 )}
                 {touched && ((error && <span>{error}</span>) || (warning && <span>{warning}</span>))}

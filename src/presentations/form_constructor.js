@@ -1,5 +1,5 @@
 import React from 'react';
-import { Field, FieldArray } from 'redux-form';
+import { Field, FieldArray, reduxForm } from 'redux-form';
 import styled from 'styled-components';
 import { FormFieldType } from "../redusers/actions";
 import OptionsConstructor from './options_constructor';
@@ -26,7 +26,7 @@ class FormConstructor extends React.Component {
     }
 
     render() {
-        const {handleSubmit, pristine, reset, submitting} = this.props;
+        const {handleSubmit, pristine, reset, submitting, needOptions} = this.props;
 
         return (
             <FormConstructorSection>
@@ -55,10 +55,12 @@ class FormConstructor extends React.Component {
                             </Field>
                         </div>
                     </div>
-                    <div>
-                        <label htmlFor="options">Options</label>
-                        <FieldArray name='options' component={OptionsConstructor} />
-                    </div>
+                    {needOptions &&
+                        <div>
+                            <label htmlFor="options">Options</label>
+                            <FieldArray name='options' component={OptionsConstructor} />
+                        </div>
+                    }
                     <div>
                         <label htmlFor="isRequired">Required</label>
                         <Field name='isRequired' id='isRequired' component='input' type='checkbox' />
@@ -73,4 +75,6 @@ class FormConstructor extends React.Component {
     }
 }
 
-export default FormConstructor;
+export default reduxForm({
+    form: 'constructor'
+})(FormConstructor);

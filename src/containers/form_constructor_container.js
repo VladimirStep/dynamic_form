@@ -1,7 +1,8 @@
 import { connect } from "react-redux";
-import { reduxForm } from 'redux-form';
+import { formValueSelector } from 'redux-form';
 import FormConstructor from '../presentations/form_constructor';
 import { createCustomField } from "../redusers/actions";
+import { FormFieldType } from '../redusers/actions';
 
 function mapDispatchToProps(dispatch) {
     return {
@@ -9,10 +10,16 @@ function mapDispatchToProps(dispatch) {
     };
 }
 
-let FormConstructorContainer = connect(null, mapDispatchToProps)(FormConstructor);
+function mapStateToProps(state) {
+    const selector = formValueSelector('constructor');
+    const fieldTypeValue = selector(state, 'fieldType');
+    const needOptions = (fieldTypeValue === FormFieldType.RADIO || fieldTypeValue === FormFieldType.SELECT);
 
-FormConstructorContainer = reduxForm({
-    form: 'constructor'
-})(FormConstructorContainer);
+    return {
+        needOptions
+    };
+}
+
+const FormConstructorContainer = connect(mapStateToProps, mapDispatchToProps)(FormConstructor);
 
 export default FormConstructorContainer;
