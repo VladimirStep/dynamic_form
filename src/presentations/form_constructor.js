@@ -52,10 +52,13 @@ class FormConstructor extends React.Component {
                     {needOptions &&
                         <FieldArray name='options' component={OptionsConstructor} />
                     }
+                    <hr/>
+                    <p>Validations:</p>
                     <Field name='isRequired' label='Field required?'
                            component={RenderConstructorField}
                            type={FormFieldType.CHECKBOX}
                     />
+                    <hr/>
                     <div>
                         <button type='submit' disabled={pristine || submitting}>Add Field</button>
                         <button type='button' disabled={pristine || submitting} onClick={reset}>Clear</button>

@@ -10,6 +10,7 @@ class OptionsConstructor extends React.Component {
 
         return (
             <div>
+                <hr/>
                 <label htmlFor="options">Options</label>
                 {fields.map((option, index) =>
                     <div key={index}>
@@ -24,7 +25,6 @@ class OptionsConstructor extends React.Component {
                                validate={validations.required}
                         />
                         <button type='button' onClick={() => fields.remove(index)}>Remove Option</button>
-                        <hr/>
                     </div>
                 )}
                 <button type='button' onClick={() => fields.push({})}>Add Option</button>
