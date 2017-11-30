@@ -1,7 +1,8 @@
 import React from 'react';
-import { Field } from 'redux-form';
+import { Field, FieldArray } from 'redux-form';
 import styled from 'styled-components';
 import { FormFieldType } from "../redusers/actions";
+import OptionsConstructor from './options_constructor';
 
 const FormConstructorSection = styled.section`
         flex-basis: 32%;
@@ -32,27 +33,31 @@ class FormConstructor extends React.Component {
                 <h3>Form Constructor</h3>
                 <form onSubmit={handleSubmit(this.submitForm)}>
                     <div>
-                        <label>Field name</label>
+                        <label htmlFor="fieldName">Field name</label>
                         <div>
-                            <Field name='fieldName' component='input' type='text' />
+                            <Field name='fieldName' id='fieldName' component='input' type='text' />
                         </div>
                     </div>
                     <div>
-                        <label>Field label</label>
+                        <label htmlFor='fieldLabel'>Field label</label>
                         <div>
-                            <Field name='fieldLabel' component='input' type='text' />
+                            <Field name='fieldLabel' id='fieldLabel' component='input' type='text' />
                         </div>
                     </div>
                     <div>
-                        <label>Field type</label>
+                        <label htmlFor='fieldType'>Field type</label>
                         <div>
-                            <Field name='fieldType' component='select'>
+                            <Field name='fieldType' id='fieldType' component='select'>
                                 <option></option>
                                 { Object.values(FormFieldType).map((type, index) =>
                                     <option key={index} value={type}>{type}</option>
                                 )}
                             </Field>
                         </div>
+                    </div>
+                    <div>
+                        <label htmlFor="options">Options</label>
+                        <FieldArray name='options' component={OptionsConstructor} />
                     </div>
                     <div>
                         <label htmlFor="isRequired">Required</label>

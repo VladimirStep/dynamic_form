@@ -12,11 +12,12 @@ const initialState = {
 function formConstructorReduser(state = initialState, action) {
     switch (action.type) {
         case CREATE_CUSTOM_FIELD:
-            const { fieldName, fieldLabel, fieldType, isRequired } = action.fieldProperties;
+            const { fieldName, fieldLabel, fieldType, options, isRequired } = action.fieldProperties;
             const newField = {
                 fieldName,
                 fieldLabel: fieldLabel || fieldName,
                 fieldType,
+                options,
                 isRequired: isRequired || false
             };
             return Object.assign({}, state, {
