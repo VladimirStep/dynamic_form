@@ -3,6 +3,8 @@ import { Field, FieldArray, reduxForm } from 'redux-form';
 import styled from 'styled-components';
 import { FormFieldType } from "../redusers/actions";
 import OptionsConstructor from './options_constructor';
+import * as validations from '../validations/constructor_validations';
+import RenderConstructorField from './render_constructor_field';
 
 const FormConstructorSection = styled.section`
         flex-basis: 32%;
@@ -32,12 +34,9 @@ class FormConstructor extends React.Component {
             <FormConstructorSection>
                 <h3>Form Constructor</h3>
                 <form onSubmit={handleSubmit(this.submitForm)}>
-                    <div>
-                        <label htmlFor="fieldName">Field name</label>
-                        <div>
-                            <Field name='fieldName' id='fieldName' component='input' type='text' />
-                        </div>
-                    </div>
+                    <Field name='fieldName' label='Field name'
+                           component={RenderConstructorField} type='text'
+                           validate={validations.required} />
                     <div>
                         <label htmlFor='fieldLabel'>Field label</label>
                         <div>

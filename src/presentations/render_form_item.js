@@ -6,7 +6,7 @@ class RenderFormItem extends React.Component {
         const { field: { fieldLabel, fieldType, options },
             input, meta: { touched, error, warning } } = this.props;
 
-        let output;
+        let output = null;
 
         if (fieldType === FormFieldType.TEXT ||
             fieldType === FormFieldType.PASSWORD ||
