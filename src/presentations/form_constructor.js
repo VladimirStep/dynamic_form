@@ -23,6 +23,7 @@ class FormConstructor extends React.Component {
     }
 
     submitForm(values) {
+        console.log(values);
         this.props.addField(values);
         this.props.reset('constructor');
     }
@@ -54,15 +55,15 @@ class FormConstructor extends React.Component {
                     }
                     <hr/>
                     <p>Validations:</p>
-                    <Field name='isRequired' label='Field required?'
+                    <Field name='validations.required' label='Required?'
                            component={RenderConstructorField}
                            type={FormFieldType.CHECKBOX}
                     />
-                    <Field name='isNumber' label='Number?'
+                    <Field name='validations.number' label='Number?'
                            component={RenderConstructorField}
                            type={FormFieldType.CHECKBOX}
                     />
-                    <Field name='isEmail' label='Email?'
+                    <Field name='validations.email' label='Email?'
                            component={RenderConstructorField}
                            type={FormFieldType.CHECKBOX}
                     />

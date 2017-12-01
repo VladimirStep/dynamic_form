@@ -5,6 +5,8 @@ export const REORDER_CUSTOM_FIELDS = 'REORDER_CUSTOM_FIELDS';
 
 export const FormFieldType = {
     TEXT: 'text',
+    NUMBER: 'number',
+    EMAIL: 'email',
     PASSWORD: 'password',
     SELECT: 'select',
     CHECKBOX: 'checkbox',

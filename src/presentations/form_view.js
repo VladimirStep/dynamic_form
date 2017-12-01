@@ -37,6 +37,7 @@ class FormView extends React.Component {
                                           field={field}
                                           index={index}
                                           fields={fields}
+                                          validate={[]}
                             />;
                         }
                     )}

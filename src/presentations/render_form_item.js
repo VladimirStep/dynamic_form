@@ -8,15 +8,7 @@ class RenderFormItem extends React.Component {
 
         let output = null;
 
-        if (fieldType === FormFieldType.TEXT ||
-            fieldType === FormFieldType.PASSWORD ||
-            fieldType === FormFieldType.CHECKBOX) {
-            output = <div>
-                <label htmlFor={input.name}>{fieldLabel}</label>
-                <input {...input} id={input.name} type={fieldType} />
-                {touched && ((error && <span>{error}</span>) || (warning && <span>{warning}</span>))}
-            </div>
-        } else if (fieldType === FormFieldType.SELECT) {
+        if (fieldType === FormFieldType.SELECT) {
             output = <div>
                 <label htmlFor={input.name}>{fieldLabel}</label>
                 <select {...input} id={input.name}>
@@ -36,6 +28,12 @@ class RenderFormItem extends React.Component {
                         {option.optionLabel}
                     </label>
                 )}
+                {touched && ((error && <span>{error}</span>) || (warning && <span>{warning}</span>))}
+            </div>
+        } else {
+            output = <div>
+                <label htmlFor={input.name}>{fieldLabel}</label>
+                <input {...input} id={input.name} type={fieldType} />
                 {touched && ((error && <span>{error}</span>) || (warning && <span>{warning}</span>))}
             </div>
         }
