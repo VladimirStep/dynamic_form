@@ -1,9 +1,10 @@
 import React from 'react';
 import { FormFieldType } from '../redusers/actions';
+import RemoveButtonContainer from '../containers/remove_button_container';
 
 class RenderFormItem extends React.Component {
     render() {
-        const { field: { fieldLabel, fieldType, options },
+        const { field: { fieldLabel, fieldType, options }, index, fields,
             input, meta: { touched, error, warning } } = this.props;
 
         let output = null;
@@ -38,7 +39,12 @@ class RenderFormItem extends React.Component {
             </div>
         }
 
-        return output;
+        return (
+            <div>
+                {output}
+                <RemoveButtonContainer index={index} />
+            </div>
+        );
     }
 }
 
