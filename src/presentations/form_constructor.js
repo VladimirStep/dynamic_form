@@ -5,6 +5,7 @@ import { FormFieldType } from "../redusers/actions";
 import OptionsConstructor from './options_constructor';
 import * as validations from '../validations/validations';
 import RenderConstructorField from './render_constructor_field';
+import { FormValidation } from '../validations/validations';
 
 const FormConstructorSection = styled.section`
         flex-basis: 32%;
@@ -55,18 +56,14 @@ class FormConstructor extends React.Component {
                     }
                     <hr/>
                     <p>Validations:</p>
-                    <Field name='validations.required' label='Required?'
-                           component={RenderConstructorField}
-                           type={FormFieldType.CHECKBOX}
-                    />
-                    <Field name='validations.number' label='Number?'
-                           component={RenderConstructorField}
-                           type={FormFieldType.CHECKBOX}
-                    />
-                    <Field name='validations.email' label='Email?'
-                           component={RenderConstructorField}
-                           type={FormFieldType.CHECKBOX}
-                    />
+                    {Object.values(FormValidation).map((validation, index) => {
+                        return <Field key={index}
+                            name={`validations.${validation.name}`}
+                            label={validation.name}
+                            component={RenderConstructorField}
+                            type={FormFieldType.CHECKBOX}
+                        />
+                    })}
                     <hr/>
                     <div>
                         <button type='submit' disabled={pristine || submitting}>Add Field</button>
