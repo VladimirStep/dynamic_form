@@ -1,12 +1,17 @@
 import { connect } from "react-redux";
 import ModalWindow from '../presentations/modal_window';
+import { hideModal } from "../redusers/actions";
 
 function mapStateToProps(state) {
-    return {};
+    return {
+        show: state.modal.showModal
+    };
 }
 
 function mapDispatchToProps(dispatch) {
-    return {};
+    return {
+        closeModal: () => dispatch(hideModal())
+    };
 }
 
 const ModalWindowContainer = connect(

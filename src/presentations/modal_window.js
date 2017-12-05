@@ -24,15 +24,25 @@ const ModalBody = styled.div`
 `;
 
 class ModalWindow extends React.Component {
+    constructor(props) {
+        super(props);
+        this.handleCloseClick = this.handleCloseClick.bind(this)
+    }
+
+    handleCloseClick(event) {
+        event.preventDefault();
+        this.props.closeModal();
+    }
+
     render() {
-        // if(!this.props.show) {
-        //     return null;
-        // }
+        if(!this.props.show) {
+            return null;
+        }
 
         return (
             <ModalWrapper>
                 <ModalContainer>
-
+                    <button type='button' onClick={this.handleCloseClick}>Close</button>
                 </ModalContainer>
             </ModalWrapper>
         );
