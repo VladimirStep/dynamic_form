@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import FormConstructorContainer from '../containers/form_constructor_container';
 
 const ModalWrapper = styled.section`
     position: fixed;
@@ -43,6 +44,7 @@ class ModalWindow extends React.Component {
             <ModalWrapper>
                 <ModalContainer>
                     <button type='button' onClick={this.handleCloseClick}>Close</button>
+                    <FormConstructorContainer initialValues={this.props.field} />
                 </ModalContainer>
             </ModalWrapper>
         );

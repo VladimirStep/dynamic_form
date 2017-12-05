@@ -10,7 +10,26 @@ export const FormValidation = {
     EMAIL: { name: 'email', execFunction: email }
 };
 
-export const mapValidations = (validationNamesArray=[]) => {
+// TODO: Refactor this two functions
+
+function getValidationNames(validations) {
+    let validationNames = [];
+
+    Object.entries(validations || {}).map((entry) => {
+        if (entry[1]) {
+            validationNames.push(entry[0])
+        }
+    });
+
+    if (validationNames.length > 0) {
+        return validationNames
+    }
+
+    return [];
+}
+
+export const mapValidations = (validationsObject={}) => {
+    const validationNamesArray = getValidationNames(validationsObject);
     let validationFunctionsArray = [];
     validationNamesArray.map((validationName) => {
         Object.values(FormValidation).map((validationObject) => {

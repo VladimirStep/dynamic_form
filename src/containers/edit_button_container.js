@@ -2,9 +2,9 @@ import { connect } from "react-redux";
 import EditButton from '../presentations/edit_button';
 import { showModal } from "../redusers/actions";
 
-function mapDispatchToProps(dispatch) {
+function mapDispatchToProps(dispatch, ownProps) {
     return {
-        openModal: () => dispatch(showModal())
+        openModal: () => dispatch(showModal(ownProps.index))
     };
 }
 

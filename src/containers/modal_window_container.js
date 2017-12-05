@@ -4,7 +4,8 @@ import { hideModal } from "../redusers/actions";
 
 function mapStateToProps(state) {
     return {
-        show: state.modal.showModal
+        show: state.modal.showModal,
+        field: state.formConstructor.fields[state.modal.fieldIndex]
     };
 }
 

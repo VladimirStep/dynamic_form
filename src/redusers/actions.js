@@ -44,9 +44,10 @@ export function reorderCustomField(indexA, indexB) {
     };
 }
 
-export function showModal() {
+export function showModal(index) {
     return {
-        type: SHOW_MODAL
+        type: SHOW_MODAL,
+        index
     };
 }
 

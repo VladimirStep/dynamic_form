@@ -9,22 +9,6 @@ const initialState = {
     fields: []
 };
 
-function getValidationNames(validations) {
-    let validationNames = [];
-
-    Object.entries(validations || {}).map((entry) => {
-        if (entry[1]) {
-            validationNames.push(entry[0])
-        }
-    });
-
-    if (validationNames.length > 0) {
-        return validationNames
-    }
-
-    return undefined;
-}
-
 function removeField(fields, index) {
     let leftFields = fields.slice();
     let removedField;
@@ -63,7 +47,7 @@ function formConstructorReduser(state = initialState, action) {
                 fieldLabel: fieldLabel || fieldName,
                 fieldType,
                 options,
-                validations: getValidationNames(validations)
+                validations
             };
 
             return Object.assign({}, state, {

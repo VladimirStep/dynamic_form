@@ -8,11 +8,13 @@ function modalReduser(state = initialState, action) {
     switch (action.type) {
         case SHOW_MODAL:
             return Object.assign({}, state, {
-                showModal: true
+                showModal: true,
+                fieldIndex: action.index
             });
         case HIDE_MODAL:
             return Object.assign({}, state, {
-                showModal: false
+                showModal: false,
+                fieldIndex: undefined
             });
         default:
             return state;

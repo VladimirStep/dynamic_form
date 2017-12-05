@@ -44,7 +44,7 @@ class RenderFormItem extends React.Component {
         return (
             <div>
                 {output}
-                <EditButtonContainer />
+                <EditButtonContainer index={index} />
                 <ReorderButtonsContainer index={index} />
                 <RemoveButtonContainer index={index} />
             </div>
