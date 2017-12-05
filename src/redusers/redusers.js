@@ -43,6 +43,16 @@ function removeField(fields, index) {
     return { leftFields };
 }
 
+function swapItems(array, indexA, indexB) {
+    let newArray = array.slice();
+    if (newArray[indexA] && newArray[indexB]) {
+        const temp = newArray[indexA];
+        newArray[indexA] = newArray[indexB];
+        newArray[indexB] = temp;
+    }
+    return newArray;
+}
+
 function formConstructorReduser(state = initialState, action) {
     switch (action.type) {
         case CREATE_CUSTOM_FIELD:
@@ -70,9 +80,11 @@ function formConstructorReduser(state = initialState, action) {
 
             return state;
         case REORDER_CUSTOM_FIELDS:
-            console.log(action.indexA, action.indexB);
+            const { indexA, indexB } = action;
 
-            return state;
+            return Object.assign({}, state, {
+                fields: swapItems(state.fields, indexA, indexB)
+            });
         default:
             return state;
     }
