@@ -25,6 +25,24 @@ function getValidationNames(validations) {
     return undefined;
 }
 
+function removeField(fields, index) {
+    let leftFields = fields.slice();
+    let removedField;
+
+    if (index > -1) {
+        removedField = leftFields.splice(index, 1)
+    }
+
+    if (removedField) {
+        return {
+            removedField,
+            leftFields
+        };
+    }
+
+    return { leftFields };
+}
+
 function formConstructorReduser(state = initialState, action) {
     switch (action.type) {
         case CREATE_CUSTOM_FIELD:
@@ -41,6 +59,16 @@ function formConstructorReduser(state = initialState, action) {
             return Object.assign({}, state, {
                 fields: state.fields.concat(newField)
             });
+        case DELETE_CUSTOM_FIELD:
+            const { removedField, leftFields } = removeField(state.fields, action.index);
+
+            if (removedField) {
+                return Object.assign({}, state, {
+                    fields: leftFields
+                });
+            }
+
+            return state;
         default:
             return state;
     }
