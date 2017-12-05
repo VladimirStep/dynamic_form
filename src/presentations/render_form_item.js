@@ -1,6 +1,7 @@
 import React from 'react';
 import { FormFieldType } from '../redusers/actions';
 import RemoveButtonContainer from '../containers/remove_button_container';
+import ReorderButtonsContainer from '../containers/reorder_buttons_container';
 
 class RenderFormItem extends React.Component {
     render() {
@@ -43,6 +44,7 @@ class RenderFormItem extends React.Component {
             <div>
                 {output}
                 <RemoveButtonContainer index={index} />
+                <ReorderButtonsContainer index={index} />
             </div>
         );
     }

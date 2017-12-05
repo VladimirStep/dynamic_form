@@ -69,6 +69,10 @@ function formConstructorReduser(state = initialState, action) {
             }
 
             return state;
+        case REORDER_CUSTOM_FIELDS:
+            console.log(action.indexA, action.indexB);
+
+            return state;
         default:
             return state;
     }
