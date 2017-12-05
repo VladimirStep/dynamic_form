@@ -2,6 +2,7 @@ import React from 'react';
 import FormConstructorContainer from '../containers/form_constructor_container';
 import FormViewContainer from '../containers/form_view_container';
 import styled from 'styled-components';
+import ModalWindowContainer from '../containers/modal_window_container';
 
 const AppWrapper = styled.main`
     margin: 0;
@@ -17,6 +18,7 @@ function DynamicFormApp() {
         <AppWrapper>
             <FormViewContainer />
             <FormConstructorContainer />
+            <ModalWindowContainer />
         </AppWrapper>
     );
 }
