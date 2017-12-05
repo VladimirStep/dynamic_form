@@ -2,6 +2,8 @@ export const CREATE_CUSTOM_FIELD = 'CREATE_CUSTOM_FIELD';
 export const UPDATE_CUSTOM_FIELD = 'UPDATE_CUSTOM_FIELD';
 export const DELETE_CUSTOM_FIELD = 'DELETE_CUSTOM_FIELD';
 export const REORDER_CUSTOM_FIELDS = 'REORDER_CUSTOM_FIELDS';
+export const SHOW_MODAL = 'SHOW_MODAL';
+export const HIDE_MODAL = 'HIDE_MODAL';
 
 export const FormFieldType = {
     TEXT: 'text',
@@ -39,5 +41,17 @@ export function reorderCustomField(indexA, indexB) {
         type: REORDER_CUSTOM_FIELDS,
         indexA,
         indexB
+    };
+}
+
+export function showModal() {
+    return {
+        type: SHOW_MODAL
+    };
+}
+
+export function hideModal() {
+    return {
+        type: HIDE_MODAL
     };
 }

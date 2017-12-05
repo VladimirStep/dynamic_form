@@ -5,11 +5,13 @@ import { createStore, combineReducers } from 'redux';
 import { reducer as formReducer } from 'redux-form';
 import './index.css';
 import formConstructorReduser from './redusers/redusers';
+import modalReduser from './redusers/modal_reduser';
 import DynamicFormApp from './presentations/dynamic_form_app';
 
 const allRedusers = {
     form: formReducer,
-    formConstructor: formConstructorReduser
+    formConstructor: formConstructorReduser,
+    modal: modalReduser
 };
 const rootReduser = combineReducers(allRedusers);
 const store = createStore(
