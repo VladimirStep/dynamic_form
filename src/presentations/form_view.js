@@ -18,11 +18,44 @@ const Form = styled.form`
     width: 100%;
     input, select, button {
         display: inline-block;
-        margin: 0 5px 20px;
+        margin: 0 10px 0 0;
         border: 1px solid #d0d0d0;
         border-radius: 5px;
-        padding: 10px 20px;
+        padding: 9px 15px;
     }
+    input[type=checkbox] {
+        vertical-align: -18%;
+    }
+    label {
+        color: #2a2a2a;
+    }
+    button {
+        cursor: pointer;
+        &[disabled] {
+            opacity: 0.5;
+        } 
+    }
+    button[type=submit] {
+        color: #ffffff;
+        background-color: #2e61ed;
+        &:hover {
+            background-color: #2c5ccf;
+        }
+    }
+    button[type=button] {
+        color: #000000;
+        background-color: #fcfcfc;
+        &:hover {
+            background-color: #e8e8e8;
+
+        }
+    }
+`;
+
+const ButtonRow = styled.div`
+    width: 100%;
+    padding: 5px 0;
+    margin-top: 10px;
 `;
 
 class FormView extends React.Component {
@@ -55,10 +88,10 @@ class FormView extends React.Component {
                             />;
                         }
                     )}
-                    <div>
+                    <ButtonRow>
                         <button type='submit' disabled={pristine || submitting}>Submit</button>
                         <button type='button' disabled={pristine || submitting} onClick={reset}>Clear</button>
-                    </div>
+                    </ButtonRow>
                 </Form>
             </FormViewSection>
         );

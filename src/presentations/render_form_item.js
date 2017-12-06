@@ -5,11 +5,35 @@ import ReorderButtonsContainer from '../containers/reorder_buttons_container';
 import EditButtonContainer from '../containers/edit_button_container';
 import styled from 'styled-components';
 
-const FieldRow = styled.div`
+const Error = styled.div`
+    display: block;
+    color: #9e1419;
+    font-size: 0.8em;
+    font-weight: bold;
+`;
+
+const Row = styled.div`
     width: 100%;
     > div {
         display: inline-block;
+        vertical-align: top;
     }
+`;
+
+const InputWrap = styled.div`
+    padding: 5px 0;
+    min-height: 75px;
+`;
+
+const ButtonGroup = styled.div`
+    margin-top: 1.5em;
+    > div {
+        display: inline-block;
+    }
+`;
+
+const CheckBoxWrap = styled.div`
+    padding: 5px 0;
 `;
 
 class RenderFormItem extends React.Component {
@@ -20,16 +44,18 @@ class RenderFormItem extends React.Component {
         let output = null;
 
         if (fieldType === FormFieldType.SELECT) {
-            output = <div>
+            output = <InputWrap>
                 <label htmlFor={input.name}>{fieldLabel}</label>
-                <select {...input} id={input.name}>
-                    <option></option>
-                    {options.map((option, index) =>
-                        <option key={index} value={option.optionValue}>{option.optionLabel}</option>
-                    )}
-                </select>
-                {touched && ((error && <span>{error}</span>) || (warning && <span>{warning}</span>))}
-            </div>
+                <div>
+                    <select {...input} id={input.name}>
+                        <option></option>
+                        {options.map((option, index) =>
+                            <option key={index} value={option.optionValue}>{option.optionLabel}</option>
+                        )}
+                    </select>
+                    {touched && ((error && <Error>{error}</Error>) || (warning && <Error>{warning}</Error>))}
+                </div>
+            </InputWrap>
         } else if (fieldType === FormFieldType.RADIO) {
             output = <div>
                 <label htmlFor={input.name}>{fieldLabel}</label>
@@ -44,23 +70,27 @@ class RenderFormItem extends React.Component {
                         {option.optionLabel}
                     </label>
                 )}
-                {touched && ((error && <span>{error}</span>) || (warning && <span>{warning}</span>))}
+                {touched && ((error && <Error>{error}</Error>) || (warning && <Error>{warning}</Error>))}
             </div>
         } else {
-            output = <div>
+            output = <InputWrap>
                 <label htmlFor={input.name}>{fieldLabel}</label>
-                <input {...input} id={input.name} type={fieldType} />
-                {touched && ((error && <span>{error}</span>) || (warning && <span>{warning}</span>))}
-            </div>
+                <div>
+                    <input {...input} id={input.name} type={fieldType} />
+                    {touched && ((error && <Error>{error}</Error>) || (warning && <Error>{warning}</Error>))}
+                </div>
+            </InputWrap>
         }
 
         return (
-            <FieldRow>
+            <Row>
                 {output}
-                <EditButtonContainer index={index} />
-                <ReorderButtonsContainer index={index} />
-                <RemoveButtonContainer index={index} />
-            </FieldRow>
+                <ButtonGroup>
+                    <EditButtonContainer index={index} />
+                    <ReorderButtonsContainer index={index} />
+                    <RemoveButtonContainer index={index} />
+                </ButtonGroup>
+            </Row>
         );
     }
 }
