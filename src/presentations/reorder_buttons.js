@@ -1,4 +1,20 @@
 import React from 'react';
+import styled from 'styled-components';
+
+const Move = styled.button`
+    margin: 0;
+    padding: 0;
+    color: #244bcd;
+    opacity: 0.6;
+    border: none;
+    background: transparent;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 26px;
+    &:hover {
+        opacity: 1;
+    }
+`;
 
 class ReorderButtons extends React.Component {
     constructor(props) {
@@ -20,8 +36,8 @@ class ReorderButtons extends React.Component {
     render() {
         return (
             <div>
-                <button type='button' onClick={this.handleMoveUp}>Up</button>
-                <button type='button' onClick={this.handleMoveDown}>Down</button>
+                <Move type='button' onClick={this.handleMoveUp}>&uarr;</Move>
+                <Move type='button' onClick={this.handleMoveDown}>&darr;</Move>
             </div>
         );
     }

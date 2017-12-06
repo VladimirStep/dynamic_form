@@ -1,4 +1,20 @@
 import React from 'react';
+import styled from 'styled-components';
+
+const Close = styled.button`
+    margin: 0 10px;
+    padding: 0;
+    color: #e83029;
+    opacity: 0.6;
+    border: none;
+    background: transparent;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 26px;
+    &:hover {
+        opacity: 1;
+    }
+`;
 
 class RemoveButton extends React.Component {
     constructor(props) {
@@ -13,7 +29,7 @@ class RemoveButton extends React.Component {
 
     render() {
         return (
-            <button type='button' onClick={this.handleClick}>Remove</button>
+            <Close type='button' onClick={this.handleClick}>&times;</Close>
         );
     }
 }

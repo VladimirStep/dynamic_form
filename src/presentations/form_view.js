@@ -16,7 +16,7 @@ const FormViewSection = styled.section`
 
 const Form = styled.form`
     width: 100%;
-    input, select, button {
+    input, select {
         display: inline-block;
         margin: 0 10px 0 0;
         border: 1px solid #d0d0d0;
@@ -29,7 +29,18 @@ const Form = styled.form`
     label {
         color: #2a2a2a;
     }
+`;
+
+const ButtonRow = styled.div`
+    width: 100%;
+    padding: 5px 0;
+    margin-top: 10px;
     button {
+        display: inline-block;
+        margin: 0 10px 0 0;
+        border: 1px solid #d0d0d0;
+        border-radius: 5px;
+        padding: 9px 15px;
         cursor: pointer;
         &[disabled] {
             opacity: 0.5;
@@ -50,12 +61,6 @@ const Form = styled.form`
 
         }
     }
-`;
-
-const ButtonRow = styled.div`
-    width: 100%;
-    padding: 5px 0;
-    margin-top: 10px;
 `;
 
 class FormView extends React.Component {
