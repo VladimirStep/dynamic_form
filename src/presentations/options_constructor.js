@@ -3,6 +3,12 @@ import { Field } from 'redux-form';
 import { FormFieldType } from "../redusers/actions";
 import * as validations from '../validations/validations';
 import RenderConstructorField from './render_constructor_field';
+import styled from 'styled-components';
+
+const ButtonRow = styled.div`
+    width: 100%;
+    padding: 5px 0;
+`;
 
 class OptionsConstructor extends React.Component {
     render() {
@@ -11,7 +17,7 @@ class OptionsConstructor extends React.Component {
         return (
             <div>
                 <hr/>
-                <label htmlFor="options">Options</label>
+                <label htmlFor="options">Options:</label>
                 {fields.map((option, index) =>
                     <div key={index}>
                         <Field name={`${option}.optionLabel`} label='Option label'
@@ -24,10 +30,14 @@ class OptionsConstructor extends React.Component {
                                type={FormFieldType.TEXT}
                                validate={validations.required}
                         />
-                        <button type='button' onClick={() => fields.remove(index)}>Remove Option</button>
+                        <ButtonRow>
+                            <button type='button' onClick={() => fields.remove(index)}>Remove Option</button>
+                        </ButtonRow>
                     </div>
                 )}
-                <button type='button' onClick={() => fields.push({})}>Add Option</button>
+                <ButtonRow>
+                    <button type='button' onClick={() => fields.push({})}>Add Option</button>
+                </ButtonRow>
             </div>
         );
     }
