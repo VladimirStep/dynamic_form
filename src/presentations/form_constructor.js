@@ -8,7 +8,7 @@ import RenderConstructorField from './render_constructor_field';
 import { FormValidation } from '../validations/validations';
 
 const FormConstructorSection = styled.section`
-        flex-basis: 32%;
+        flex-basis: 20%;
         padding: 20px;
         background-color: ${props => props.color};
         display: flex;
@@ -16,6 +16,49 @@ const FormConstructorSection = styled.section`
         justify-content: flex-start;
         align-items: flex-start;
     `;
+
+const Form = styled.form`
+    width: 100%;
+    input, select, button {
+        display: inline-block;
+        margin: 0 10px 0 0;
+        border: 1px solid #d0d0d0;
+        border-radius: 5px;
+        padding: 9px 15px;
+    }
+    input[type=checkbox] {
+        vertical-align: -18%;
+    }
+    label {
+        color: #2a2a2a;
+    }
+    button {
+        cursor: pointer;
+        &[disabled] {
+            opacity: 0.5;
+        } 
+    }
+    button[type=submit] {
+        color: #ffffff;
+        background-color: #2e61ed;
+        &:hover {
+            background-color: #2c5ccf;
+        }
+    }
+    button[type=button] {
+        color: #000000;
+        background-color: #fcfcfc;
+        &:hover {
+            background-color: #e8e8e8;
+
+        }
+    }
+`;
+
+const ButtonRow = styled.div`
+    width: 100%;
+    padding: 5px 0;
+`;
 
 class FormConstructor extends React.Component {
     constructor(props) {
@@ -40,7 +83,7 @@ class FormConstructor extends React.Component {
         return (
             <FormConstructorSection color={editing ? '#ffffff' : '#eeeeee'}>
                 <h3>Form Constructor</h3>
-                <form onSubmit={handleSubmit(this.submitForm)}>
+                <Form onSubmit={handleSubmit(this.submitForm)}>
                     <Field name='fieldName' label='Field name'
                            component={RenderConstructorField}
                            type={FormFieldType.TEXT}
@@ -72,18 +115,18 @@ class FormConstructor extends React.Component {
                     <hr/>
 
                     {editing &&
-                        <div>
+                        <ButtonRow>
                             <button type='submit' disabled={pristine || submitting}>Update Field</button>
                             <button type='button' disabled={pristine || submitting} onClick={reset}>Reset</button>
-                        </div>
+                        </ButtonRow>
                     }
                     {!editing &&
-                        <div>
+                        <ButtonRow>
                             <button type='submit' disabled={pristine || submitting}>Add Field</button>
                             <button type='button' disabled={pristine || submitting} onClick={reset}>Clear</button>
-                        </div>
+                        </ButtonRow>
                     }
-                </form>
+                </Form>
             </FormConstructorSection>
         );
     }

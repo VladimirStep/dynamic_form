@@ -5,7 +5,7 @@ import RenderFormItem from './render_form_item';
 import { mapValidations } from '../validations/validations';
 
 const FormViewSection = styled.section`
-    flex-basis: 68%;
+    flex-basis: 80%;
     padding: 20px;
     background-color: #ffffff;
     display: flex;
