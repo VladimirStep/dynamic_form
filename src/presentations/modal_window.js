@@ -21,9 +21,6 @@ const ModalContainer = styled.div`
     padding: 20px; 
 `;
 
-const ModalBody = styled.div`
-`;
-
 class ModalWindow extends React.Component {
     constructor(props) {
         super(props);

@@ -4,7 +4,7 @@ import { Provider } from 'react-redux';
 import { createStore, combineReducers } from 'redux';
 import { reducer as formReducer } from 'redux-form';
 import './index.css';
-import formConstructorReduser from './redusers/redusers';
+import formConstructorReduser from './redusers/form_constructor_redusers';
 import modalReduser from './redusers/modal_reduser';
 import DynamicFormApp from './presentations/dynamic_form_app';
 

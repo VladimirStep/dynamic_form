@@ -6,7 +6,7 @@ import EditButtonContainer from '../containers/edit_button_container';
 
 class RenderFormItem extends React.Component {
     render() {
-        const { field: { fieldLabel, fieldType, options }, index, fields,
+        const { field: { fieldLabel, fieldType, options }, index,
             input, meta: { touched, error, warning } } = this.props;
 
         let output = null;

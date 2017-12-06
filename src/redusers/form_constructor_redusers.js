@@ -48,16 +48,10 @@ function updateFieldValues(fields, newValues, index) {
 function formConstructorReduser(state = initialState, action) {
     switch (action.type) {
         case CREATE_CUSTOM_FIELD:
-            // TODO: Refactor this in update field manner
-            const { fieldName, fieldLabel, fieldType, options, validations } = action.fieldProperties;
-
-            const newField = {
-                fieldName,
-                fieldLabel: fieldLabel || fieldName,
-                fieldType,
-                options,
-                validations
-            };
+            let newField = action.fieldProperties;
+            if (!newField.fieldLabel) {
+                newField.fieldLabel = newField.fieldName;
+            }
 
             return Object.assign({}, state, {
                 fields: state.fields.concat(newField)
@@ -81,7 +75,7 @@ function formConstructorReduser(state = initialState, action) {
         case UPDATE_CUSTOM_FIELD:
             let updatedValues = action.fieldProperties;
             if (!updatedValues.fieldLabel) {
-                updatedValues.fieldLabel = updatedValues.fieldName
+                updatedValues.fieldLabel = updatedValues.fieldName;
             }
 
             return Object.assign({}, state, {
