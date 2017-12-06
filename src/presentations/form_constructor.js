@@ -10,7 +10,7 @@ import { FormValidation } from '../validations/validations';
 const FormConstructorSection = styled.section`
         flex-basis: 32%;
         padding: 20px;
-        background-color: #eeeeee;
+        background-color: ${props => props.color};
         display: flex;
         flex-direction: column;
         justify-content: flex-start;
@@ -38,7 +38,7 @@ class FormConstructor extends React.Component {
         const {handleSubmit, pristine, reset, submitting, needOptions, editing} = this.props;
 
         return (
-            <FormConstructorSection>
+            <FormConstructorSection color={editing ? '#ffffff' : '#eeeeee'}>
                 <h3>Form Constructor</h3>
                 <form onSubmit={handleSubmit(this.submitForm)}>
                     <Field name='fieldName' label='Field name'

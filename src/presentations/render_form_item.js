@@ -3,6 +3,14 @@ import { FormFieldType } from '../redusers/actions';
 import RemoveButtonContainer from '../containers/remove_button_container';
 import ReorderButtonsContainer from '../containers/reorder_buttons_container';
 import EditButtonContainer from '../containers/edit_button_container';
+import styled from 'styled-components';
+
+const FieldRow = styled.div`
+    width: 100%;
+    > div {
+        display: inline-block;
+    }
+`;
 
 class RenderFormItem extends React.Component {
     render() {
@@ -47,12 +55,12 @@ class RenderFormItem extends React.Component {
         }
 
         return (
-            <div>
+            <FieldRow>
                 {output}
                 <EditButtonContainer index={index} />
                 <ReorderButtonsContainer index={index} />
                 <RemoveButtonContainer index={index} />
-            </div>
+            </FieldRow>
         );
     }
 }

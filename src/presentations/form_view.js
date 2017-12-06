@@ -14,6 +14,17 @@ const FormViewSection = styled.section`
     align-items: flex-start;
 `;
 
+const Form = styled.form`
+    width: 100%;
+    input, select, button {
+        display: inline-block;
+        margin: 0 5px 20px;
+        border: 1px solid #d0d0d0;
+        border-radius: 5px;
+        padding: 10px 20px;
+    }
+`;
+
 class FormView extends React.Component {
     constructor(props) {
         super(props);
@@ -31,7 +42,7 @@ class FormView extends React.Component {
         return (
             <FormViewSection>
                 <h3>My form</h3>
-                <form onSubmit={handleSubmit(this.submitForm)}>
+                <Form onSubmit={handleSubmit(this.submitForm)}>
                     {fields.map((field, index) => {
                             const validations = mapValidations(field.validations);
                             return <Field key={index}
@@ -48,7 +59,7 @@ class FormView extends React.Component {
                         <button type='submit' disabled={pristine || submitting}>Submit</button>
                         <button type='button' disabled={pristine || submitting} onClick={reset}>Clear</button>
                     </div>
-                </form>
+                </Form>
             </FormViewSection>
         );
     }
