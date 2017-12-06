@@ -22,6 +22,7 @@ class FormView extends React.Component {
 
     submitForm(values) {
         console.log(values);
+        this.props.reset('customForm');
     }
 
     render() {
