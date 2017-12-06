@@ -26,6 +26,10 @@ const Form = styled.form`
     input[type=checkbox] {
         vertical-align: -18%;
     }
+    input[type=radio] {
+        vertical-align: -18%;
+        margin: 8px 10px;
+    }
     label {
         color: #2a2a2a;
     }

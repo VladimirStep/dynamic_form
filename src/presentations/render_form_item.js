@@ -25,15 +25,25 @@ const InputWrap = styled.div`
     min-height: 75px;
 `;
 
-const ButtonGroup = styled.div`
-    margin-top: 1.5em;
-    > div {
-        display: inline-block;
-    }
+const RadioWrap = styled.div`
+    padding: 5px 0;
+    min-height: 75px;
 `;
 
 const CheckBoxWrap = styled.div`
     padding: 5px 0;
+    min-height: 50px;
+    &:first-of-type + div {
+        margin-top: 0;        
+    }
+`;
+
+const ButtonGroup = styled.div`
+    margin-top: 1.5em;
+    margin-left: 50px;
+    > div {
+        display: inline-block;
+    }
 `;
 
 class RenderFormItem extends React.Component {
@@ -57,21 +67,29 @@ class RenderFormItem extends React.Component {
                 </div>
             </InputWrap>
         } else if (fieldType === FormFieldType.RADIO) {
-            output = <div>
+            output = <RadioWrap>
                 <label htmlFor={input.name}>{fieldLabel}</label>
-                {options.map((option, index) =>
-                    <label key={index}>
-                        <input name={input.name}
-                               value={option.optionValue}
-                               type={fieldType}
-                               checked={input.value === option.optionValue}
-                               onChange={input.onChange}
-                        />
-                        {option.optionLabel}
-                    </label>
-                )}
+                <div>
+                    {options && options.map((option, index) =>
+                        <label key={index}>
+                            <input name={input.name}
+                                   value={option.optionValue}
+                                   type={fieldType}
+                                   checked={input.value === option.optionValue}
+                                   onChange={input.onChange}
+                            />
+                            {option.optionLabel}
+                        </label>
+                    )}
+                    {touched && ((error && <Error>{error}</Error>) || (warning && <Error>{warning}</Error>))}
+                </div>
+            </RadioWrap>
+        } else if (fieldType === FormFieldType.CHECKBOX) {
+            output = <CheckBoxWrap>
+                <input {...input} id={input.name} type={fieldType} />
+                <label htmlFor={input.name}>{fieldLabel}</label>
                 {touched && ((error && <Error>{error}</Error>) || (warning && <Error>{warning}</Error>))}
-            </div>
+            </CheckBoxWrap>
         } else {
             output = <InputWrap>
                 <label htmlFor={input.name}>{fieldLabel}</label>
