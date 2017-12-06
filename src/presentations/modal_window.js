@@ -13,12 +13,32 @@ const ModalWrapper = styled.section`
 `;
 
 const ModalContainer = styled.div`
+    position: relative;
     background-color: #ffffff;
     border-radius: 10px;
     max-width: 700px;
     min-height: 500px;
+    max-height: 90%;
+    overflow-y: scroll;
     margin: 0 auto;
-    padding: 20px; 
+    padding: 20px;
+`;
+
+const Close = styled.button`
+    position: absolute;
+    top: 0;
+    right: 0;
+    margin: 2px 3px;
+    color: #e83029;
+    opacity: 0.6;
+    border: none;
+    background: transparent;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 30px;
+    &:hover {
+        opacity: 1;
+    }
 `;
 
 class ModalWindow extends React.Component {
@@ -40,7 +60,7 @@ class ModalWindow extends React.Component {
         return (
             <ModalWrapper>
                 <ModalContainer>
-                    <button type='button' onClick={this.handleCloseClick}>Close</button>
+                    <Close type='button' onClick={this.handleCloseClick}>&times;</Close>
                     <FormConstructorContainer initialValues={this.props.field} />
                 </ModalContainer>
             </ModalWrapper>
