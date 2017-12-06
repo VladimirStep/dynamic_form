@@ -27,7 +27,12 @@ class RenderFormItem extends React.Component {
                 <label htmlFor={input.name}>{fieldLabel}</label>
                 {options.map((option, index) =>
                     <label key={index}>
-                        <input name={input.name} value={option.optionValue} type={fieldType} />
+                        <input name={input.name}
+                               value={option.optionValue}
+                               type={fieldType}
+                               checked={input.value === option.optionValue}
+                               onChange={input.onChange}
+                        />
                         {option.optionLabel}
                     </label>
                 )}
