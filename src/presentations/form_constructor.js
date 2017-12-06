@@ -25,12 +25,17 @@ class FormConstructor extends React.Component {
 
     submitForm(values) {
         console.log(values);
-        this.props.addField(values);
+        if (!this.props.editing) {
+            this.props.addField(values);
+        } else {
+            this.props.updateField(values, this.props.index);
+            this.props.closeModal();
+        }
         this.props.reset('constructor');
     }
 
     render() {
-        const {handleSubmit, pristine, reset, submitting, needOptions} = this.props;
+        const {handleSubmit, pristine, reset, submitting, needOptions, editing} = this.props;
 
         return (
             <FormConstructorSection>
@@ -65,10 +70,19 @@ class FormConstructor extends React.Component {
                         />
                     })}
                     <hr/>
-                    <div>
-                        <button type='submit' disabled={pristine || submitting}>Add Field</button>
-                        <button type='button' disabled={pristine || submitting} onClick={reset}>Clear</button>
-                    </div>
+
+                    {editing &&
+                        <div>
+                            <button type='submit' disabled={pristine || submitting}>Update Field</button>
+                            <button type='button' disabled={pristine || submitting} onClick={reset}>Reset</button>
+                        </div>
+                    }
+                    {!editing &&
+                        <div>
+                            <button type='submit' disabled={pristine || submitting}>Add Field</button>
+                            <button type='button' disabled={pristine || submitting} onClick={reset}>Clear</button>
+                        </div>
+                    }
                 </form>
             </FormConstructorSection>
         );

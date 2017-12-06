@@ -37,9 +37,18 @@ function swapItems(array, indexA, indexB) {
     return newArray;
 }
 
+function updateFieldValues(fields, newValues, index) {
+    let newFieldsArray = fields.slice();
+    if (newFieldsArray[index]) {
+        newFieldsArray[index] = newValues;
+    }
+    return newFieldsArray;
+}
+
 function formConstructorReduser(state = initialState, action) {
     switch (action.type) {
         case CREATE_CUSTOM_FIELD:
+            // TODO: Refactor this in update field manner
             const { fieldName, fieldLabel, fieldType, options, validations } = action.fieldProperties;
 
             const newField = {
@@ -68,6 +77,15 @@ function formConstructorReduser(state = initialState, action) {
 
             return Object.assign({}, state, {
                 fields: swapItems(state.fields, indexA, indexB)
+            });
+        case UPDATE_CUSTOM_FIELD:
+            let updatedValues = action.fieldProperties;
+            if (!updatedValues.fieldLabel) {
+                updatedValues.fieldLabel = updatedValues.fieldName
+            }
+
+            return Object.assign({}, state, {
+                fields: updateFieldValues(state.fields, updatedValues, action.index)
             });
         default:
             return state;

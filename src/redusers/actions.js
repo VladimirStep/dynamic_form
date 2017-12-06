@@ -22,10 +22,11 @@ export function createCustomField(fieldProperties) {
     };
 }
 
-export function updateCustomField(fieldProperties) {
+export function updateCustomField(fieldProperties, index) {
     return {
         type: UPDATE_CUSTOM_FIELD,
-        fieldProperties
+        fieldProperties,
+        index
     };
 }
 
